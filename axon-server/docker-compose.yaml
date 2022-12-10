@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+#  docker run -d --name axonserver -p 8024:8024 -p 8124:8124 axoniq/axonserver
+  axon-server:
+    image: axoniq/axonserver:4.5.14
+    ports:
+    - "8024:8024"
+    - "8124:8124"
+    volumes:
+    - axon-data:/data
+    - axon-eventdata:/eventdata
+    - ./config:/config
+
+volumes:
+  axon-data:
+  axon-eventdata:
