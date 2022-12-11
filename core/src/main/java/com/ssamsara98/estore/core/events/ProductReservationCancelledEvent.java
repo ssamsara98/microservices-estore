@@ -1,14 +1,16 @@
-package com.ssamsara98.estore.core.event;
+package com.ssamsara98.estore.core.events;
 
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 @Builder
 public class ProductReservationCancelledEvent {
-	private final String productId;
+	private final UUID productId;
 	private final int quantity;
-	private final String orderId;
-	private final String userId;
+	private final UUID orderId;
+	private final UUID userId;
 	private final String reason;
 }
