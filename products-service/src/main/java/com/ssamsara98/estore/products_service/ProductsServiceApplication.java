@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Import;
 @SpringBootApplication
 @EnableDiscoveryClient
 @Import({XStreamConfig.class})
-public class ProductServiceApplication {
+public class ProductsServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProductServiceApplication.class, args);
+		SpringApplication.run(ProductsServiceApplication.class, args);
 	}
 
 }

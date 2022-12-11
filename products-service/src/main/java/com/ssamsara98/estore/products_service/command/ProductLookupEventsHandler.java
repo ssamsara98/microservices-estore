@@ -25,7 +25,7 @@ public class ProductLookupEventsHandler {
 	}
 
 	@ResetHandler
-	public void reset(){
+	public void reset() {
 		repository.deleteAllInBatch();
 	}
 }

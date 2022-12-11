@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class ProductsServiceErrorHandler {
+public class ProductServiceErrorHandler {
 
 	@ExceptionHandler({IllegalStateException.class, IllegalArgumentException.class})
 	public ResponseEntity<Object> handleIllegalStateException(Exception ex) {

@@ -1,9 +1,9 @@
 package com.ssamsara98.estore.products_service.command.rest;
 
-import lombok.RequiredArgsConstructor;
 import com.ssamsara98.estore.core.model.ProductIdDto;
 import com.ssamsara98.estore.products_service.command.CreateProductCommand;
 import com.ssamsara98.estore.products_service.mapper.ProductMapper;
+import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
