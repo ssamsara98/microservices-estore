@@ -1,4 +1,4 @@
-package com.ssamsara98.estore.core.event;
+package com.ssamsara98.estore.core.events;
 
 import lombok.Builder;
 import lombok.Data;
