@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.ssamsara98.estore.users_service.query.rest;
 
 import com.ssamsara98.estore.core.model.User;
@@ -13,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/users")
 public class UsersQueryController {
-	QueryGateway queryGateway;
+	private QueryGateway queryGateway;
 
 	@Autowired
 	public UsersQueryController(QueryGateway queryGateway) {
