@@ -9,6 +9,7 @@
         <module>discovery-server</module>
         <module>api-gateway</module>
         <module>users-service</module>
+        <module>products-service</module>
     </modules>
 
     <parent>
