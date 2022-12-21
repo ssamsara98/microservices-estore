@@ -7,6 +7,7 @@ package com.ssamsara98.estore.orders_service.query;
 
 import com.ssamsara98.estore.orders_service.core.data.OrderEntity;
 import com.ssamsara98.estore.orders_service.core.data.OrdersRepository;
+import com.ssamsara98.estore.orders_service.core.events.OrderApprovedEvent;
 import com.ssamsara98.estore.orders_service.core.events.OrderCreatedEvent;
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
@@ -31,4 +32,16 @@ public class OrderEventsHandler {
 		this.ordersRepository.save(orderEntity);
 	}
 
+	@EventHandler
+	public void on(OrderApprovedEvent orderApprovedEvent) {
+		OrderEntity orderEntity = ordersRepository.findByOrderId(orderApprovedEvent.getOrderId());
+
+		if (orderEntity == null) {
+//			TODO: do something about it
+		}
+
+		orderEntity.setOrderStatus(orderApprovedEvent.getOrderStatus());
+
+		ordersRepository.save(orderEntity);
+	}
 }

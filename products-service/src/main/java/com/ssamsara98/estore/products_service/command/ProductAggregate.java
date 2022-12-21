@@ -1,5 +1,7 @@
 package com.ssamsara98.estore.products_service.command;
 
+import com.ssamsara98.estore.core.commands.ReserveProductCommand;
+import com.ssamsara98.estore.core.events.ProductReservedEvent;
 import com.ssamsara98.estore.products_service.core.events.ProductCreatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
@@ -41,6 +43,22 @@ public class ProductAggregate {
 		AggregateLifecycle.apply(productCreatedEvent);
 	}
 
+	@CommandHandler
+	public void handle(ReserveProductCommand reserveProductCommand) {
+		if (quantity < reserveProductCommand.getQuantity()) {
+			throw new IllegalArgumentException("Insufficient number of items in stock");
+		}
+
+		ProductReservedEvent productReservedEvent = ProductReservedEvent.builder()
+			.orderId(reserveProductCommand.getOrderId())
+			.productId(reserveProductCommand.getProductId())
+			.quantity(reserveProductCommand.getQuantity())
+			.userId(reserveProductCommand.getUserId())
+			.build();
+
+		AggregateLifecycle.apply(productReservedEvent);
+	}
+
 	@EventSourcingHandler
 	public void on(ProductCreatedEvent event) {
 		System.out.println("ProductAggregate->on(ProductCreatedEvent productCreatedEvent) " + event.toString());
@@ -48,5 +66,10 @@ public class ProductAggregate {
 		this.price = event.getPrice();
 		this.title = event.getTitle();
 		this.quantity = event.getQuantity();
+	}
+
+	@EventSourcingHandler
+	public void on(ProductReservedEvent productReservedEvent) {
+		this.quantity -= productReservedEvent.getQuantity();
 	}
 }

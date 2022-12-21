@@ -11,6 +11,7 @@
         <module>users-service</module>
         <module>products-service</module>
         <module>orders-service</module>
+        <module>payments-service</module>
     </modules>
 
     <parent>
